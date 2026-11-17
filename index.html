@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CURSUS 02 — CSS BOX MODEL</title>
+  <meta name="description" content="Cursus met voorbeelden en oefeningen over het CSS box model: content, width, height, padding, border, margin en centreren met margin auto. Eindigt met een opdracht.">
+  <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+
+<!-- ══════════ TOPBALK ══════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    HTML/CSS &middot; CURSUS 02 &middot; BOX MODEL &middot; CONTENT &middot; PADDING &middot; BORDER &middot; MARGIN &middot; MARGIN: AUTO &middot; VOORBEELDEN &middot; OEFENINGEN &middot; EINDOPDRACHT &middot;
+    HTML/CSS &middot; CURSUS 02 &middot; BOX MODEL &middot; CONTENT &middot; PADDING &middot; BORDER &middot; MARGIN &middot; MARGIN: AUTO &middot; VOORBEELDEN &middot; OEFENINGEN &middot; EINDOPDRACHT &middot;
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__main">
+      <span class="tape tape--tl">CSS &middot; CURSUS 02</span>
+      <p class="eyebrow">HTML &amp; CSS &mdash; LAYOUT BASIS</p>
+      <h1 class="title">
+        <span class="title__l1">BOX</span>
+        <span class="title__l2">MODEL</span>
+      </h1>
+      <p class="lede">
+        Elk element op een pagina is een <strong>doos</strong> met vier lagen:
+        <strong>inhoud</strong>, <strong>padding</strong>, <strong>border</strong> en
+        <strong>margin</strong>. In deze cursus bekijk je bij elke laag een
+        <strong>voorbeeld</strong>, maak je <strong>oefeningen</strong> en bouw je als
+        <strong>eindopdracht</strong> een menukaart &mdash; inclusief centreren met
+        <strong>margin: auto</strong>.
+      </p>
+      <div class="chips">
+        <span class="chip chip--y">&#9201; 50 MIN</span>
+        <span class="chip">&#9670; NIVEAU 2</span>
+        <span class="chip">&#9998; INDIVIDUEEL</span>
+        <span class="chip chip--t">10 PUNTEN</span>
+      </div>
+    </div>
+    <aside class="hero__side">
+      <div class="box box--dark">
+        <p class="box__label">DE VIER LAGEN</p>
+        <div class="minibox minibox--m"><span>margin</span>
+          <div class="minibox minibox--b"><span>border</span>
+            <div class="minibox minibox--p"><span>padding</span>
+              <div class="minibox minibox--c"><span>inhoud</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="box__small box__small--y">VAN BINNEN NAAR BUITEN LEZEN &#8594;</p>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="jump">
+  <div class="wrap jump__row">
+    <span class="jump__title">INHOUD:</span>
+    <a href="#doos">01 DE DOOS</a>
+    <a href="#content">02 CONTENT</a>
+    <a href="#padding">03 PADDING</a>
+    <a href="#border">04 BORDER</a>
+    <a href="#margin">05 MARGIN</a>
+    <a href="#centreren">06 CENTREREN</a>
+    <a href="#oefenen">07 OEFENEN</a>
+    <a href="#eindopdracht">08 EINDOPDRACHT</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ══════════ 01 DE DOOS ══════════ -->
+  <section id="doos" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">01</span>
+      <h2 class="sechead__title">DE DOOS</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Vergeet even dat het om tekst of plaatjes gaat. Voor CSS is alles een
+      <strong>rechthoekige doos</strong>. Die doos heeft vier lagen, van binnen
+      naar buiten: de <strong>inhoud</strong> (content), de
+      <strong>binnenruimte</strong> (padding), het <strong>kader</strong> (border)
+      en de <strong>buitenruimte</strong> (margin).
+    </p>
+
+    <div class="cols">
+      <div class="col">
+        <div class="codebar">
+          <span class="codebar__file">voorbeeld · de vier lagen</span>
+        </div>
+        <div class="layerdemo" aria-label="Schema van het box model">
+          <div class="layer layer--m"><span class="layer__tag">MARGIN · buitenruimte, altijd doorzichtig</span>
+            <div class="layer layer--b"><span class="layer__tag">BORDER · het kader</span>
+              <div class="layer layer--p"><span class="layer__tag">PADDING · binnenruimte, krijgt de achtergrondkleur</span>
+                <div class="layer layer--c"><span class="layer__tag layer__tag--dark">CONTENT · hier staat je tekst of foto</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col--side">
+        <div class="box box--y">
+          <p class="box__label">LEESWIJZER</p>
+          <table class="mini">
+            <tr><td><code>width</code> / <code>height</code></td><td>stellen de <strong>inhoud</strong> in</td></tr>
+            <tr><td><code>padding</code></td><td>ruimte <strong>binnen</strong> het kader</td></tr>
+            <tr><td><code>border</code></td><td>het <strong>kader</strong> zelf</td></tr>
+            <tr><td><code>margin</code></td><td>ruimte <strong>buiten</strong> het kader</td></tr>
+          </table>
+        </div>
+        <div class="box box--dark">
+          <p class="box__label">ONTHOUD DIT</p>
+          <p class="box__small">
+            Standaard telt <code>width</code> alleen de inhoud. Padding en border
+            komen daar <strong>bovenop</strong>. Een doos met
+            <code>width: 200px</code> en <code>padding: 20px</code> is in het echt
+            240&nbsp;px breed. Rekenfout nummer &eacute;&eacute;n bij beginners.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 02 CONTENT ══════════ -->
+  <section id="content" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">02</span>
+      <h2 class="sechead__title">CONTENT: BREEDTE &amp; HOOGTE</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Met <code>width</code> en <code>height</code> bepaal je hoe groot de
+      <strong>inhoud</strong> van de doos is. Standaard maakt alles wat je daarna
+      toevoegt (padding, border) de doos groter. Verderop leer je een truc om dat
+      te veranderen.
+    </p>
+
+    <div class="exgrid">
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · CODE</p>
+        <pre tabindex="0"><code>.kaart {
+  width: 300px;
+  height: 120px;
+  background-color: #ffd23f;
+}</code></pre>
+        <p class="ex__cap">
+          De gele vlakte is <strong>300 &times; 120 px inhoud</strong>. Nog geen
+          padding, geen border, geen margin.
+        </p>
+      </div>
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · RESULTAAT</p>
+        <div class="demo demo--center">
+          <div class="bm-contentdemo">300 &times; 120</div>
+        </div>
+        <p class="ex__cap">Meet het maar na: exact 300 px breed en 120 px hoog.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <p class="box__label">REGEL DIE ALLES VERKLAART (STANDAARD)</p>
+      <p class="formula">totale breedte = width + padding links + padding rechts + border links + border rechts</p>
+      <p class="box__small box__small--w">
+        Margin hoort hier <strong>niet</strong> bij: dat is lege ruimte buiten de
+        doos. Oefening A rekent met deze regel.
+      </p>
+    </div>
+
+    <div class="box box--t">
+      <p class="box__label">DE TRUC: BOX-SIZING: BORDER-BOX</p>
+      <p class="box__small">
+        Standaard (<code>content-box</code>) telt <code>width</code> alleen de inhoud.
+        Met <code>border-box</code> telt <code>width</code> <strong>alles</strong> mee:
+        inhoud, padding en border. Je kiest dan de totale breedte zelf, en rekenen
+        wordt een stuk makkelijker.
+      </p>
+      <div class="demo demo--stack">
+        <div>
+          <p class="bb-label"><code>content-box</code> (standaard) &middot; width 220 px &rarr; totaal <strong>268 px</strong></p>
+          <div class="bm-bx bm-bx--cb">Standaard</div>
+        </div>
+        <div>
+          <p class="bb-label"><code>border-box</code> &middot; width 220 px &rarr; totaal <strong>220 px</strong></p>
+          <div class="bm-bx bm-bx--bb">Border-box</div>
+        </div>
+      </div>
+      <pre class="pre pre--card"><code>* {
+  box-sizing: border-box;
+}</code></pre>
+      <p class="box__small box__small--w">
+        Veel ontwerpers zetten deze regel bovenaan hun CSS. Daarna blijft de breedte
+        altijd gelijk, ook als je later padding of border toevoegt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ 03 PADDING ══════════ -->
+  <section id="padding" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">03</span>
+      <h2 class="sechead__title">PADDING: RUIMTE BINNEN</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Padding is de <strong>binnenruimte</strong> tussen de inhoud en het kader.
+      De <strong>achtergrondkleur loopt door</strong> in de padding. Tekst die
+      tegen de rand plakt? Dat los je op met padding, nooit met lege spaties of
+      extra <code>&lt;br&gt;</code>-tags.
+    </p>
+
+    <div class="exgrid">
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · CODE</p>
+        <pre tabindex="0"><code>.kaart {
+  background-color: #ffd23f;
+  padding: 24px;
+}</code></pre>
+        <p class="ex__cap">Rondom 24 px ademruimte. De gele kleur vult de padding mee.</p>
+      </div>
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · RESULTAAT</p>
+        <div class="demo">
+          <div class="bm-pad-none">Zonder padding: de tekst plakt tegen de rand.</div>
+          <div class="bm-pad-yes">Met padding: dezelfde tekst, 24 px ademruimte.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols cols--tight">
+      <div class="col">
+        <div class="box box--y">
+          <p class="box__label">STENO: 1, 2, 3 OF 4 WAARDEN</p>
+          <pre class="pre pre--card"><code>padding: 20px;             /* alle 4 kanten */
+padding: 10px 30px;        /* boven en onder: 10px · links en rechts: 30px */
+padding: 10px 30px 40px;   /* boven: 10px · links en rechts: 30px · onder: 40px */
+padding: 1px 2px 3px 4px;  /* klok mee: boven rechts onder links */</code></pre>
+          <p class="box__small box__small--w">
+            Ezelsbruggetje bij vier waarden: lees ze als een <strong>klok</strong>
+            &mdash; boven, rechts, onder, links.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="box">
+          <p class="box__label">PROBEER ZELF · SCHUIF</p>
+          <p class="box__small">Sleep aan de schuif en kijk wat er met de doos gebeurt.</p>
+          <label class="slider"><span>padding: <strong id="pad-val">24</strong>px</span>
+            <input id="pad-range" type="range" min="0" max="60" value="24">
+          </label>
+          <div class="demo"><div class="bm-pad-live" id="pad-live">Ik groei van binnenuit.</div></div>
+          <p class="box__small box__small--w">Let op: de inhoud blijft even groot, de doos wordt groter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 04 BORDER ══════════ -->
+  <section id="border" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">04</span>
+      <h2 class="sechead__title">BORDER: HET KADER</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      De border is het <strong>kader</strong> om padding en inhoud heen. Een zichtbaar
+      kader heeft een <strong>dikte</strong>, een <strong>stijl</strong> en een
+      <strong>kleur</strong> nodig. Vergeet je de stijl, dan zie je helemaal geen kader.
+    </p>
+
+    <div class="exgrid">
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · CODE</p>
+        <pre tabindex="0"><code>.kaart {
+  border-width: 4px;
+  border-style: solid;
+  border-color: #111111;
+}
+
+/* korter: alles in één regel */
+.kader-kort {
+  border: 4px solid #111111;
+}</code></pre>
+        <p class="ex__cap">Beide schrijfwijzen doen exact hetzelfde. De korte vorm zie je het vaakst.</p>
+      </div>
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · RESULTAAT</p>
+        <div class="demo demo--stack">
+          <div class="bm-b-solid">solid · volle lijn</div>
+          <div class="bm-b-dashed">dashed · streepjes</div>
+          <div class="bm-b-dotted">dotted · puntjes</div>
+          <div class="bm-b-double">double · dubbele lijn (min. 3px)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note__tag">LET OP</span>
+      <span>
+        <code>border: 4px #111111;</code> zonder stijl doet <strong>niets</strong>:
+        de standaardstijl is <code>none</code>. Dat kan ook per kant:
+        <code>border-top</code>, <code>border-right</code>, <code>border-bottom</code>,
+        <code>border-left</code> &mdash; handig voor &eacute;&eacute;n streep onder een titel.
+      </span>
+    </div>
+  </section>
+
+  <!-- ══════════ 05 MARGIN ══════════ -->
+  <section id="margin" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">05</span>
+      <h2 class="sechead__title">MARGIN: RUIMTE BUITEN</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Margin is de <strong>buitenruimte</strong> rond de doos: de afstand tot de
+      buren. Margin is altijd <strong>doorzichtig</strong> &mdash; de achtergrondkleur
+      van het element komt er nooit in. Ook margin kan met 1 tot 4 waarden in
+      steno, net als padding.
+    </p>
+
+    <div class="exgrid">
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · CODE</p>
+        <pre tabindex="0"><code>.kaart {
+  background-color: #ffd23f;
+  margin: 20px;
+}</code></pre>
+        <p class="ex__cap">
+          Rondom 20 px lege ruimte. Geel zie je alleen <em>binnen</em> het kader,
+          nooit in de margin.
+        </p>
+      </div>
+      <div class="excol">
+        <p class="ex__label">VOORBEELD · RESULTAAT</p>
+        <div class="demo demo--margin">
+          <div class="bm-margin-live" id="margin-live">Mijn gele vlak blijft even groot. Alleen de lege ruimte eromheen groeit.</div>
+        </div>
+        <label class="slider"><span>margin: <strong id="margin-val">20</strong>px</span>
+          <input id="margin-range" type="range" min="0" max="60" value="20">
+        </label>
+      </div>
+    </div>
+
+    <div class="cols cols--tight">
+      <div class="col">
+        <div class="box box--t">
+          <p class="box__label">PADDING OF MARGIN?</p>
+          <p class="box__small">
+            Vraag het zo: moet de ruimte <strong>dezelfde achtergrond</strong> krijgen
+            als het element? Kies <strong>padding</strong>. Moet de ruimte
+            <strong>leeg</strong> blijven, zoals de witruimte tussen twee kaarten?
+            Kies <strong>margin</strong>.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="box box--y">
+          <p class="box__label">GEK, MAAR WAAR: MARGES PLAKKEN</p>
+          <p class="box__small">
+            Twee dozen onder elkaar met elk <code>margin: 20px</code> krijgen
+            <strong>geen</strong> 40 px tussenruimte, maar 20 px. Verticale marges
+            <strong>plakken aan elkaar</strong>: de grootste wint. Horizontale
+            marges tellen wel gewoon op.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 06 CENTREREN ══════════ -->
+  <section id="centreren" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">06</span>
+      <h2 class="sechead__title">CENTREREN MET MARGIN: AUTO</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Een doos horizontaal centreren doe je met <strong>automatische zijmarges</strong>:
+      links en rechts evenveel. De browser rekent dat zelf uit. Dit is het recept
+      dat je uit het hoofd moet kennen.
+    </p>
+
+    <div class="exgrid">
+      <div class="excol">
+        <p class="ex__label">HET RECEPT · CODE</p>
+        <pre tabindex="0"><code>.kaart {
+  width: 520px;
+  margin: 0 auto;
+}</code></pre>
+        <p class="ex__cap">
+          <code>margin: 0 auto</code> betekent: boven en onder 0, links en rechts
+          <strong>auto</strong>. Twee gelijke marges duwen de doos precies in het midden.
+        </p>
+      </div>
+      <div class="excol">
+        <p class="ex__label">PROBEER ZELF · KLIK</p>
+        <div class="demo">
+          <div class="bm-center-stage">
+            <div class="bm-center-box" id="center-box">Ik ben 60% breed</div>
+          </div>
+        </div>
+        <p class="centerbtns">
+          <button class="btn btn--sm btn--g" id="btn-links" type="button">ZONDER AUTO</button>
+          <button class="btn btn--sm" id="btn-midden" type="button">MET MARGIN: AUTO</button>
+        </p>
+        <p class="ex__cap" id="center-code">Nu geldt: <code>margin: 0;</code> &mdash; de doos plakt links.</p>
+      </div>
+    </div>
+
+    <div class="box box--dark box--wide">
+      <p class="box__label">DRIE VOORWAARDEN &mdash; ALLE DRIE NODIG</p>
+      <ol class="list list--num">
+        <li>Het element is een <strong>blok</strong> (<code>div</code>, <code>article</code>, <code>section</code>, <code>p</code>, <code>h1</code> &hellip; zijn dat vanzelf).</li>
+        <li>Het heeft een <strong>breedte</strong> (<code>width</code>) die smaller is dan de ouder. Zonder breedte vult een blok alles &mdash; dan valt er niets te centreren.</li>
+        <li>De <strong>linker- en rechtermarge</strong> staan op <code>auto</code>.</li>
+      </ol>
+    </div>
+
+    <div class="box box--red box--wide">
+      <p class="box__label">VEELGEMAAKTE FOUT: TEXT-ALIGN</p>
+      <p class="box__small">
+        <code>text-align: center;</code> centreert de <strong>inhoud</strong> (tekst,
+        plaatjes) <em>binnen</em> de doos &mdash; niet de doos zelf. Wil je de doos in
+        het midden van de pagina? Dan heb je <strong>margin: auto</strong> nodig. Ze
+        doen dus iets anders en je gebruikt ze vaak <strong>samen</strong>: margin auto
+        voor de doos, text-align voor de tekst erin.
+      </p>
+      <div class="demo demo--light demo--stack">
+        <div class="bm-compare bm-compare--text">
+          <span class="bm-compare__tag">alleen text-align: center</span>
+          <p>De tekst staat in het midden, maar de doos is nog even breed als de pagina.</p>
+        </div>
+        <div class="bm-compare bm-compare--margin">
+          <span class="bm-compare__tag">alleen margin: 0 auto + width</span>
+          <p>De doos staat in het midden. De tekst erin staat nog links.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 07 OEFENEN ══════════ -->
+  <section id="oefenen" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">07</span>
+      <h2 class="sechead__title">OEFENEN</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Vijf korte reeksen. Typ je antwoord in het vakje &mdash; je tekst blijft staan
+      tot je de pagina herlaadt. De leerkracht verbetert; er staan
+      <strong>geen antwoorden</strong> op deze pagina.
+    </p>
+
+    <!-- A -->
+    <h3 class="h3">A &middot; REKEN UIT: HOE BREED IS DE DOOS?</h3>
+    <p class="taskintro">Totale breedte = width + padding links + rechts + border links + rechts (standaard, zonder border-box). Reken uit en vul het getal in.</p>
+    <ol class="filllist">
+      <li>
+        <label for="a1"><code>width: 200px; padding: 20px; border: 5px solid black;</code></label>
+        <span class="fillline"><input id="a1" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="… px"><code class="brace">totaal</code></span>
+      </li>
+      <li>
+        <label for="a2"><code>width: 300px; padding: 15px; border: 2px solid black;</code></label>
+        <span class="fillline"><input id="a2" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="… px"><code class="brace">totaal</code></span>
+      </li>
+      <li>
+        <label for="a3"><code>width: 150px; padding: 10px 30px; border: 0;</code> (let op de steno!)</label>
+        <span class="fillline"><input id="a3" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="… px"><code class="brace">totaal</code></span>
+      </li>
+    </ol>
+
+    <!-- B -->
+    <h3 class="h3">B &middot; WELKE EIGENSCHAP ONTBREEKT?</h3>
+    <p class="taskintro">Vul de <strong>eigenschap</strong> in (het woord vóór de dubbele punt).</p>
+    <ol class="filllist">
+      <li>
+        <label for="b1">Ruimte <strong>binnen</strong> het kader, met dezelfde achtergrond.</label>
+        <span class="fillline"><input id="b1" type="text" autocomplete="off" spellcheck="false" placeholder="eigenschap"><code class="brace">: 24px;</code></span>
+      </li>
+      <li>
+        <label for="b2">Afstand <strong>buiten</strong> het kader, altijd doorzichtig.</label>
+        <span class="fillline"><input id="b2" type="text" autocomplete="off" spellcheck="false" placeholder="eigenschap"><code class="brace">: 20px;</code></span>
+      </li>
+      <li>
+        <label for="b3">Het kader zelf: dikte, stijl en kleur in één regel.</label>
+        <span class="fillline"><input id="b3" type="text" autocomplete="off" spellcheck="false" placeholder="eigenschap"><code class="brace">: 4px solid black;</code></span>
+      </li>
+      <li>
+        <label for="b4">De breedte van de <strong>inhoud</strong>.</label>
+        <span class="fillline"><input id="b4" type="text" autocomplete="off" spellcheck="false" placeholder="eigenschap"><code class="brace">: 520px;</code></span>
+      </li>
+    </ol>
+
+    <!-- C -->
+    <h3 class="h3">C &middot; CENTREER DE DOOS</h3>
+    <p class="taskintro">Maak de CSS af zodat de doos van 520 px horizontaal in het midden komt.</p>
+    <div class="codefill">
+      <pre tabindex="0"><code>.kaart {
+  <span class="blank"><input aria-label="C1: eigenschap voor de breedte" type="text" autocomplete="off" spellcheck="false" placeholder="…">: 520px;</span>
+  <span class="blank"><input aria-label="C2: eigenschap voor de marges" type="text" autocomplete="off" spellcheck="false" placeholder="…">: 0 <input class="blank--short" aria-label="C3: waarde voor links en rechts" type="text" autocomplete="off" spellcheck="false" placeholder="…">;</span>
+}</code></pre>
+      <p class="taskintro">En leg in één zin uit: waarom werkt dit niet als je de eerste regel weglaat?</p>
+      <textarea class="openline" rows="2" placeholder="Omdat …"></textarea>
+    </div>
+
+    <!-- D -->
+    <h3 class="h3">D &middot; WAAR OF NIET WAAR?</h3>
+    <p class="taskintro">Kruis per stelling aan.</p>
+    <ol class="truelist">
+      <li>
+        <span>Bij de standaardinstelling telt padding mee in de totale breedte van de doos.</span>
+        <span class="trueradios"><label><input type="radio" name="d1" value="w"> waar</label><label><input type="radio" name="d1" value="n"> niet waar</label></span>
+      </li>
+      <li>
+        <span>Margin krijgt de background-color van het element.</span>
+        <span class="trueradios"><label><input type="radio" name="d2" value="w"> waar</label><label><input type="radio" name="d2" value="n"> niet waar</label></span>
+      </li>
+      <li>
+        <span>Met <code>text-align: center</code> centreer je een doos met een vaste breedte.</span>
+        <span class="trueradios"><label><input type="radio" name="d3" value="w"> waar</label><label><input type="radio" name="d3" value="n"> niet waar</label></span>
+      </li>
+      <li>
+        <span><code>border: 4px solid red;</code> doet hetzelfde als de drie losse regels <code>border-width</code>, <code>border-style</code> en <code>border-color</code>.</span>
+        <span class="trueradios"><label><input type="radio" name="d4" value="w"> waar</label><label><input type="radio" name="d4" value="n"> niet waar</label></span>
+      </li>
+    </ol>
+
+    <!-- E -->
+    <h3 class="h3">E &middot; PADDING OF MARGIN?</h3>
+    <p class="taskintro">Kies per situatie de juiste eigenschap.</p>
+    <ol class="filllist">
+      <li>
+        <label for="e1">De tekst mag niet tegen het kader plakken; de ruimte moet geel blijven.</label>
+        <span class="fillline"><select id="e1"><option value="">kies …</option><option>padding</option><option>margin</option></select></span>
+      </li>
+      <li>
+        <label for="e2">Tussen twee kaarten moet lege, doorzichtige witruimte komen.</label>
+        <span class="fillline"><select id="e2"><option value="">kies …</option><option>padding</option><option>margin</option></select></span>
+      </li>
+      <li>
+        <label for="e3">Een knop moet groter worden, maar de tekst blijft even groot.</label>
+        <span class="fillline"><select id="e3"><option value="">kies …</option><option>padding</option><option>margin</option></select></span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ══════════ 08 EINDOPDRACHT ══════════ -->
+  <section id="eindopdracht" class="sec">
+    <div class="sechead">
+      <span class="sechead__num">08</span>
+      <h2 class="sechead__title">EINDOPDRACHT: MENUKAART</h2>
+      <span class="sechead__rule"></span>
+    </div>
+
+    <p class="p-lead">
+      Je bouwt een <strong>menukaart</strong> voor een broodjesbar. Je krijgt de
+      HTML, jij schrijft de CSS: een gecentreerde kaart met padding, een kader en
+      buitenruimte. Alles wat je nodig hebt staat in 01&ndash;06.
+    </p>
+
+    <div class="codebar">
+      <span class="codebar__file">start.html &mdash; kopieer en plak</span>
+      <span class="codebar__spacer"></span>
+      <button class="btn btn--sm" id="copy-btn" type="button">KOPIEER HTML</button>
+    </div>
+    <pre class="pre pre--code"><code id="starter-code">&lt;!DOCTYPE html&gt;
+&lt;html lang="nl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Menukaart&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;article class="kaart"&gt;
+    &lt;p class="badge"&gt;VERS&lt;/p&gt;
+    &lt;h1&gt;Lunchkaart&lt;/h1&gt;
+    &lt;ul class="gerechten"&gt;
+      &lt;li&gt;Boterham Deluxe &lt;span&gt;&euro; 7,50&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;Club kaas &amp; spek &lt;span&gt;&euro; 6,00&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;Veggie van de dag &lt;span&gt;&euro; 5,50&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p class="voet"&gt;Elke middag vers &middot; tot 14.00 uur&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <div class="codebar">
+      <span class="codebar__file">style.css &mdash; zo begin je</span>
+    </div>
+    <pre class="pre pre--code"><code>/* Naam: ______   Klas: ______
+   Totale breedte van .kaart: ______ px
+   (berekening: _________________________________) */
+
+.kaart {
+  /* gebruik width, margin, padding en border */
+}</code></pre>
+
+    <div class="cols cols--tight">
+      <div class="col">
+        <div class="box">
+          <p class="box__label">EISEN &middot; 10 PUNTEN</p>
+          <table class="mini">
+            <tr><td>1</td><td><code>.kaart</code> is precies <strong>520 px</strong> breed (<code>width</code>)</td></tr>
+            <tr><td>2</td><td><code>.kaart</code> staat <strong>horizontaal gecentreerd</strong> (<code>margin: 0 auto</code>)</td></tr>
+            <tr><td>3</td><td><strong>Binnenruimte</strong> van 24 px aan alle kanten (<code>padding</code>)</td></tr>
+            <tr><td>4</td><td>Zwart kader van 4 px, volle lijn (<code>border</code>)</td></tr>
+            <tr><td>5</td><td>Minstens 40 px <strong>buitenruimte</strong> boven en onder de kaart (<code>margin</code>)</td></tr>
+            <tr><td>6</td><td>Titel en tekst plakken <strong>nergens</strong> tegen het kader</td></tr>
+            <tr><td>7</td><td>Tussen de gerechten zit 8 px ruimte</td></tr>
+            <tr><td>8</td><td>De badge <code>VERS</code> heeft eigen padding (4 px 12 px) en een kader</td></tr>
+            <tr><td>9</td><td>Het commentaar bovenaan toont de <strong>juiste totale breedte</strong> met berekening</td></tr>
+            <tr><td>10</td><td>Naam en klas staan in het commentaar</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="col">
+        <div class="box box--y">
+          <p class="box__label">ZELFCHECK VÓÓR JE INLEVERT</p>
+          <label class="check"><input type="checkbox" class="check__i"> <span>Mijn kaart is 520 px en staat in het midden</span></label>
+          <label class="check"><input type="checkbox" class="check__i"> <span>Niets plakt tegen het kader</span></label>
+          <label class="check"><input type="checkbox" class="check__i"> <span>Er zit lucht tussen kaart en vensterrand</span></label>
+          <label class="check"><input type="checkbox" class="check__i"> <span>Ik heb de totale breedte nagerekend (520 + 2&times;padding + 2&times;border)</span></label>
+          <label class="check"><input type="checkbox" class="check__i"> <span>Naam + klas staan bovenaan style.css</span></label>
+          <p class="check__count"><span id="check-count">0</span> / 5 gecontroleerd</p>
+        </div>
+        <div class="box box--dark">
+          <p class="box__label">INDIENEN</p>
+          <p class="box__small">
+            Map <code>boxmodel_voornaam_achternaam</code> met <code>index.html</code>
+            en <code>style.css</code>.
+          </p>
+          <p class="box__small">
+            <strong>Zip de map</strong> en lever de <code>.zip</code> in op
+            <strong>Smartschool</strong>, bij de opdracht van cursus 02.
+            De oefeningen van 07 maak je op deze pagina; die hoef je niet in te dienen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box--t box--wide">
+      <p class="box__label">ZO ZIP JE JE MAP &mdash; EN LEVER JE IN</p>
+
+      <p class="box__small"><strong>Stap 1 &mdash; zip de map.</strong>
+        Rechtermuisknop op de map <code>boxmodel_voornaam_achternaam</code>:</p>
+
+      <div class="cols cols--tight">
+        <div class="col">
+          <p class="box__small">
+            <strong>Windows</strong><br>
+            <em>Verzenden naar</em> &rarr; <em>Gecomprimeerde (gezipte) map</em>.<br>
+            Windows 11: <em>Comprimeren naar ZIP-bestand</em>.
+          </p>
+        </div>
+        <div class="col">
+          <p class="box__small">
+            <strong>macOS</strong><br>
+            <em>Comprimeer &ldquo;boxmodel_&hellip;&rdquo;</em>.<br>
+            Je krijgt een <code>.zip</code> naast de map.
+          </p>
+        </div>
+      </div>
+
+      <p class="box__small"><strong>Stap 2 &mdash; controleer.</strong>
+        Open je zip: je moet de map met <code>index.html</code> en
+        <code>style.css</code> erin zien.</p>
+
+      <p class="box__small"><strong>Stap 3 &mdash; upload.</strong>
+        Smartschool &rarr; cursus 02 &rarr; <em>Bestand toevoegen</em> &rarr;
+        kies je <code>.zip</code> &rarr; <em>Indienen</em>. Wacht op de bevestiging
+        en controleer of je bestand in de lijst staat.</p>
+
+      <p class="box__small box__small--w">
+        E&eacute;n zip per leerling. Sleep de bestanden niet los in Smartschool.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <span class="foot__b">CURSUS 02</span>
+    <span>CSS BOX MODEL &mdash; HTML/CSS</span>
+    <span class="foot__spacer"></span>
+    <span class="foot__b foot__b--y">CONTENT &middot; PADDING &middot; BORDER &middot; MARGIN &middot; 50 MIN</span>
+  </div>
+</footer>
+
+<script src="boxmodel.js"></script>
+</body>
+</html>
